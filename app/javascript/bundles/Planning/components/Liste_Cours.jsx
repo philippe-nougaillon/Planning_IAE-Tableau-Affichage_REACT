@@ -5,7 +5,7 @@ import Cours from "./Cours";
 const ListeCours  = ({ items }) => {
 
   const List = ({ items }) => (
-    <table class="table">
+    <table className="table">
       { items.map((item) => (
           <Cours key={ item.id } item={ item } />
         ))

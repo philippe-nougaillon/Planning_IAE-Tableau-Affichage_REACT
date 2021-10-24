@@ -23,8 +23,10 @@ const useInterval = (callback, delay) => {
 
 const Planning = () => {
 
-  const per_page = 8;
+  const per_page = 8; // nombre de lignes par page
+  const time_to_sleep = 5; // pause entre deux pages (en secondes)
   const [currentPage, setCurrentPage] = useState(-1); 
+  const [currentTick, setCurrentTick] = useState(time_to_sleep);
   const [paginatedPlanning, setPaginatedPlanning] = useState(new Array());
 
   const planningReducer = (state, action) => {
@@ -89,6 +91,14 @@ const Planning = () => {
   }, [currentPage]);
 
   useInterval(() => {
+    // Décompte les secondes avant le changement de page
+    if (currentTick > 0) {
+      setCurrentTick(currentTick - 1); 
+    }
+    //console.log(currentTick);
+  }, 1000);
+
+  useInterval(() => {
     // Changer de page à l'expiration du délai et recharger si première page
     if (currentPage < planning.totalPages) {
       setCurrentPage(currentPage + 1);
@@ -96,18 +106,22 @@ const Planning = () => {
       console.log("Fetching Planning...")
       fetchPlanning();
       setCurrentPage(0);
+      setCurrentTick(time_to_sleep);
     }
-  }, 5000);
+  }, time_to_sleep * 1000);
+
 
   return (
     <div>
+      <h2>{ Date() }</h2>
+      <h3>
+          Page: { currentPage + 1}/{ planning.totalPages + 1 }
+          <br />
+          { "___".repeat(currentTick) }
+        </h3>
       { planning.isLoading 
-        ? (<p>Loading...</p>) 
-        : (<div>
-            <h2>{ Date() }</h2>
-            <h3>page: { currentPage + 1}/{ planning.totalPages + 1 }</h3>
-            <ListeCours items={ paginatedPlanning } />
-          </div>) 
+        ? (<h1>Loading...</h1>) 
+        : (<ListeCours items={ paginatedPlanning } />)
       }
     </div>
   );
