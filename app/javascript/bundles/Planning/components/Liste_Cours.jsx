@@ -5,11 +5,13 @@ import Cours from "./Cours";
 const ListeCours  = ({ items }) => {
 
   const List = ({ items }) => (
-    <table className="table">
+    <table className="table table-striped">
+      <tbody>
       { items.map((item) => (
           <Cours key={ item.id } item={ item } />
         ))
       }
+      </tbody>
     </table>
   );
 

@@ -106,8 +106,8 @@ const Planning = () => {
       console.log("Fetching Planning...")
       fetchPlanning();
       setCurrentPage(0);
-      setCurrentTick(time_to_sleep);
     }
+    setCurrentTick(time_to_sleep);
   }, time_to_sleep * 1000);
 
 
@@ -117,7 +117,7 @@ const Planning = () => {
       <h3>
           Page: { currentPage + 1}/{ planning.totalPages + 1 }
           <br />
-          { "___".repeat(currentTick) }
+          { "___".repeat(7 * currentTick) }
         </h3>
       { planning.isLoading 
         ? (<h1>Loading...</h1>) 
