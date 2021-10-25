@@ -120,7 +120,7 @@ const Planning = () => {
           { "___".repeat(7 * currentTick) }
         </h3>
       { planning.isLoading 
-        ? (<h1>Loading...</h1>) 
+        ? (<h1>Chargement des données...</h1>) 
         : (<ListeCours items={ paginatedPlanning } />)
       }
     </div>
