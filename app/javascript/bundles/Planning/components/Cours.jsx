@@ -2,12 +2,17 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const Cours = ({ item }) => {
-  const gommette = <span style={{backgroundColor: item.formation_color_json_v2, paddingLeft: 10, marginRight: 15 }}></span>;
   const progressBar = <div className="progress">
     <div className="progress-bar bg-dark"
       style={{ opacity: 0.3, width: item.progress_bar_pct2 + '%' }}>
     </div>
   </div>;
+  
+  const gommette = <span style={{backgroundColor: item.formation_color_json_v2, paddingLeft: 10, marginRight: 15 }}></span>;
+    
+  const badgeSalle = <span className={item.etat === "confirmé" ? 'btn btn-lg btn-success' : 'btn btn-lg btn-danger'}>
+    <h3>{item.salle_json_v2}</h3>
+  </span>;
 
   return (
     <tr>
@@ -26,8 +31,15 @@ const Cours = ({ item }) => {
           {item.matiere_json}
         </h3>
       </td>
-      <td><h3>{item.intervenant_json}</h3></td>
-      <td><h3>{item.salle_json_v2}</h3></td>
+      <td>
+        <h3>
+          {item.intervenant_json}
+          {item.intervenant_binome}
+        </h3>
+      </td>
+      <td className="align-middle" style={{width: 150}}>
+        {badgeSalle}
+      </td>
     </tr>
   );
 }
