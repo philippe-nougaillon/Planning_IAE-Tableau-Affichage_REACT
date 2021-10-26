@@ -110,32 +110,33 @@ const Planning = () => {
     setCurrentTick(time_to_sleep);
   }, time_to_sleep * 1000);
 
+  const footer = <div class="row">
+    <div class="col">
+      <h4>{Date()}</h4>
+    </div>
+    <div class="col-sm-2">
+      <h4>
+        {`Page : ${currentPage + 1} / ${planning.totalPages + 1}`}
+      </h4>
+    </div>
+    <div class="col-sm-2">
+      <h4>
+        <div class="progress">
+          <div className="progress-bar bg-warning"
+            style={{ opacity: 0.8, width: (currentTick * 10) + '%' }}>
+          </div>
+        </div>
+      </h4>
+    </div>
+  </div>;
+
   return (
     <div>
       { planning.isLoading 
         ? (<h1>Chargement des données...</h1>) 
         : (<ListeCours items={ paginatedPlanning } />)
       }
-      <div class="row">
-        <div class="col">
-          <h4>{ Date() }</h4>
-        </div>
-        <div class="col-sm-2">
-          <h4>
-            { `Page : ${ currentPage + 1} / ${ planning.totalPages + 1 }` }
-          </h4>
-        </div>        
-        <div class="col-sm-2">
-          <h4>
-            <div class="progress">
-              <div className="progress-bar bg-warning"
-                style={{ opacity: 0.5, width: (currentTick * 10) + '%' }}>
-              </div>
-            </div>
-          </h4>
-        </div>
-      </div>
-
+      { footer }
     </div>
   );
 };
