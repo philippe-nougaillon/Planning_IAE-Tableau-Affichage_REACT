@@ -23,8 +23,8 @@ const useInterval = (callback, delay) => {
 
 const Planning = () => {
 
-  const per_page = 8; // nombre de lignes par page
-  const time_to_sleep = 5; // pause entre deux pages (en secondes)
+  const per_page = 7; // nombre de lignes par page
+  const time_to_sleep = 10; // pause entre deux pages (en secondes)
   const [currentPage, setCurrentPage] = useState(-1); 
   const [currentTick, setCurrentTick] = useState(time_to_sleep);
   const [paginatedPlanning, setPaginatedPlanning] = useState(new Array());
@@ -114,15 +114,15 @@ const Planning = () => {
   return (
     <div>
       <h2>{ Date() }</h2>
-      <h3>
-          Page: { currentPage + 1}/{ planning.totalPages + 1 }
-          <br />
-          { "___".repeat(7 * currentTick) }
-        </h3>
       { planning.isLoading 
         ? (<h1>Chargement des données...</h1>) 
         : (<ListeCours items={ paginatedPlanning } />)
       }
+      <h3>
+        Page: 
+        { currentPage + 1}/{ planning.totalPages + 1 } |
+        { '- '.repeat(3 * currentTick) }
+      </h3>
     </div>
   );
 };
