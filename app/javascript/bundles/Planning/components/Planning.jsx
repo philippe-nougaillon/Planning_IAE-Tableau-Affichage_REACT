@@ -103,7 +103,7 @@ const Planning = () => {
     if (currentPage < planning.totalPages) {
       setCurrentPage(currentPage + 1);
     } else {
-      console.log("Fetching Planning...")
+      //console.log("Fetching Planning...")
       fetchPlanning();
       setCurrentPage(0);
     }
@@ -113,16 +113,22 @@ const Planning = () => {
 
   return (
     <div>
-      <h2>{ Date() }</h2>
       { planning.isLoading 
         ? (<h1>Chargement des données...</h1>) 
         : (<ListeCours items={ paginatedPlanning } />)
       }
-      <h3>
-        Page: 
-        { currentPage + 1}/{ planning.totalPages + 1 } |
-        { '- '.repeat(3 * currentTick) }
-      </h3>
+      <div class="row">
+        <div class="col">
+          <h4>{ Date() }</h4>
+        </div>
+        <div class="col-sm-3">
+          <h4>
+            { `Page : ${ currentPage + 1}/${ planning.totalPages + 1 } | `}
+            { '- '.repeat(currentTick) }
+          </h4>
+        </div>
+      </div>
+
     </div>
   );
 };
