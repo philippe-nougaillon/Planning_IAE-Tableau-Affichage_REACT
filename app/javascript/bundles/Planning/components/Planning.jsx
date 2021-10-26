@@ -110,7 +110,6 @@ const Planning = () => {
     setCurrentTick(time_to_sleep);
   }, time_to_sleep * 1000);
 
-
   return (
     <div>
       { planning.isLoading 
@@ -121,10 +120,18 @@ const Planning = () => {
         <div class="col">
           <h4>{ Date() }</h4>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <h4>
-            { `Page : ${ currentPage + 1}/${ planning.totalPages + 1 } | `}
-            { '- '.repeat(currentTick) }
+            { `Page : ${ currentPage + 1} / ${ planning.totalPages + 1 }` }
+          </h4>
+        </div>        
+        <div class="col-sm-2">
+          <h4>
+            <div class="progress">
+              <div className="progress-bar bg-warning"
+                style={{ opacity: 0.5, width: (currentTick * 10) + '%' }}>
+              </div>
+            </div>
           </h4>
         </div>
       </div>
