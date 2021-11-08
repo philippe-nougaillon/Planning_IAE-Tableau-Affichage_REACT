@@ -37,8 +37,10 @@ const Cours = ({ item }) => {
           {item.intervenant_binome}
         </h3>
       </td>
-      <td className="align-middle" style={{width: 150}}>
-        {badgeSalle}
+      <td className="align-middle" style={{width: 170}}>
+        <div style={{whiteSpace: "nowrap"}}>
+          {badgeSalle}
+        </div>
       </td>
     </tr>
   );

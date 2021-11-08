@@ -1,7 +1,9 @@
 import React, { useState, useReducer, useRef, useEffect } from 'react';
 import ListeCours from './Liste_Cours';
 
-const API_ENDPOINT = "https://planning.iae-paris.com/api/v2/cours?d="
+//const API_ENDPOINT = "https://planning.iae-paris.com/api/v2/cours?d="
+const API_ENDPOINT = "http://100.115.92.199:4000/api/v4/cours?d="
+
 
 const useInterval = (callback, delay) => {
   const savedCallback = useRef();
@@ -64,9 +66,7 @@ const Planning = () => {
   const fetchPlanning = () => {
     dispatchPlanning({ type: 'PLANNING_FETCH_INIT' });
 
-    const today = new Date().toISOString().slice(0, 10);
-
-    fetch(`${ API_ENDPOINT }${ today }`)
+    fetch(`${ API_ENDPOINT }`)
       .then((response) => response.json())
       .then((result) => {
         dispatchPlanning({
@@ -110,22 +110,22 @@ const Planning = () => {
     setCurrentTick(time_to_sleep);
   }, time_to_sleep * 1000);
 
-  const footer = <div class="row">
-    <div class="col">
+  const footer = <div className="row p-3">
+    <div className="col-sm-6">
       <h4>{Date()}</h4>
     </div>
-    <div class="col-sm-2">
+    <div className="col-sm-5">
       <h4>
-        {`Page : ${currentPage + 1} / ${planning.totalPages + 1}`}
-      </h4>
-    </div>
-    <div class="col-sm-2">
-      <h4>
-        <div class="progress">
+        <div className="progress">
           <div className="progress-bar bg-warning"
             style={{ opacity: 0.8, width: (currentTick * 10) + '%' }}>
           </div>
         </div>
+      </h4>
+    </div>
+    <div className="col-sm-1">
+      <h4>
+        {`Page: ${currentPage + 1} / ${planning.totalPages + 1}`}
       </h4>
     </div>
   </div>;
