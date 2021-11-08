@@ -34,7 +34,12 @@ const Cours = ({ item }) => {
       <td>
         <h3>
           {item.intervenant_json}
-          {item.intervenant_binome}
+          { item.intervenant_binome_json &&
+            <span>
+              <br />
+              {item.intervenant_binome_json}
+            </span>
+          }
         </h3>
       </td>
       <td className="align-middle" style={{width: 170}}>
