@@ -2,7 +2,7 @@ import React, { useState, useReducer, useRef, useEffect } from 'react';
 import ListeCours from './Liste_Cours';
 
 //const API_ENDPOINT = "https://planning.iae-paris.com/api/v2/cours?d="
-const API_ENDPOINT = "http://100.115.92.199:4000/api/v4/cours?d="
+const API_ENDPOINT = "http://100.115.92.199:4000/api/v4/cours"
 
 
 const useInterval = (callback, delay) => {
