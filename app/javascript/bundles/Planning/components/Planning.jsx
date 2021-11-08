@@ -26,7 +26,7 @@ const useInterval = (callback, delay) => {
 const Planning = () => {
 
   const per_page = 7; // nombre de lignes par page
-  const time_to_sleep = 10; // pause entre deux pages (en secondes)
+  const time_to_sleep = 11; // pause entre deux pages (en secondes)
   const [currentPage, setCurrentPage] = useState(-1); 
   const [currentTick, setCurrentTick] = useState(time_to_sleep);
   const [paginatedPlanning, setPaginatedPlanning] = useState(new Array());
@@ -118,7 +118,7 @@ const Planning = () => {
       <h4>
         <div className="progress">
           <div className="progress-bar bg-warning"
-            style={{ opacity: 0.8, width: (currentTick * 10) + '%' }}>
+            style={{ opacity: 0.8, width: ((currentTick -1) * 10) + '%' }}>
           </div>
         </div>
       </h4>
