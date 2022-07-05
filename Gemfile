@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.7.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
@@ -57,4 +57,4 @@ group :production do
 end
 
 gem "react_on_rails", "= 12.4"
-gem 'mini_racer', platforms: :ruby
+#gem 'mini_racer', platforms: :ruby
